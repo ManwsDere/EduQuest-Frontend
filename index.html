@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduQuest - Your Learning Journey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="loginOverlay" class="overlay">
+        <div class="login-container">
+            <h2>Login to EduQuest</h2>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="signupOverlay" class="overlay hidden">
+        <div class="login-container">
+            <h2>Create Account</h2>
+            <form id="signupForm">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="signupEmail" placeholder="Email" required>
+                <input type="password" id="signupPassword" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">EduQuest</div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#universities">Universities</a>
+            <a href="#courses">Professional Courses</a>
+            <a href="#subscriptions">Subscriptions</a>
+            <button id="loginBtn" class="login-btn" onclick="showLogin()">Login</button>
+            <button id="logoutBtn" class="logout-btn" onclick="logout()">Logout</button>
+            <img id="profile-icon" class="profile-icon hidden" src="profilepic.jpg" alt="Profile" onclick="toggleProfileMenu()">
+        </div>
+    </nav>
+    
+    <header class="hero">
+        <h1>Welcome to EduQuest</h1>
+        <p>Your Complete Learning Solution</p>
+    </header>
+
+    <section id="universities" class="universities">
+        <h2>Select Your University</h2>
+        <div class="university-grid" id="universityGrid"></div>
+    </section>
+
+    <section id="courses" class="courses">
+        <h2>Professional Courses</h2>
+        <div class="course-grid" id="courseGrid">
+      
+          <!-- Data Science -->
+          <div class="course-card">
+            <h3>Data Science</h3>
+            <div class="course-buttons">
+              <a href="pages/data-science/quiz.html" class="btn">Quizzes</a>
+              <a href="pages/data-science/notes.html" class="btn">Notes</a>
+              <a href="pages/data-science/videos.html" class="btn">Videos</a>
+              <a href="pages/data-science/tests.html" class="btn">Test Series</a>
+            </div>
+          </div>
+      
+          <!-- Cybersecurity -->
+          <div class="course-card">
+            <h3>Cybersecurity</h3>
+            <div class="course-buttons">
+              <a href="pages/cybersecurity/quiz.html" class="btn">Quizzes</a>
+              <a href="pages/cybersecurity/notes.html" class="btn">Notes</a>
+              <a href="pages/cybersecurity/videos.html" class="btn">Videos</a>
+              <a href="pages/cybersecurity/tests.html" class="btn">Test Series</a>
+            </div>
+          </div>
+      
+          <!-- Cloud Computing -->
+          <div class="course-card">
+            <h3>Cloud Computing</h3>
+            <div class="course-buttons">
+              <a href="pages/cloud/quiz.html" class="btn">Quizzes</a>
+              <a href="pages/cloud/notes.html" class="btn">Notes</a>
+              <a href="pages/cloud/videos.html" class="btn">Videos</a>
+              <a href="pages/cloud/tests.html" class="btn">Test Series</a>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+      
+    
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content profile-modal">
+            <span class="close-btn" onclick="closeProfileModal()">&times;</span>
+            <h2 class="modal-title">Profile Details</h2>
+            
+            <div class="profile-info">
+                <div class="info-row">
+                    <span class="info-label"><i class="fas fa-user"></i> Name:</span>
+                    <span class="info-value" id="profile-name">Loading...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
+                    <span class="info-value" id="profile-email">Loading...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label"><i class="fas fa-crown"></i> Subscription:</span>
+                    <span class="info-value" id="profile-subscription">Loading...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label"><i class="fas fa-calendar-alt"></i> Member_Since: </span>
+                    <span class="info-value" id="profile-joindate">     Loading...</span>
+                </div>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="action-btn upgrade-btn" onclick="upgradeSubscription()">
+                    <i class="fas fa-rocket"></i> Upgrade Plan
+                </button>
+                <button class="action-btn close-btn" onclick="closeProfileModal()">
+                    <i class="fas fa-times"></i>X
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section id="subscriptions" class="subscriptions">
+        <h2>Subscription Plans</h2>
+        <div class="plan-container">
+            <div class="plan">
+                <h3>Basic Plan</h3>
+                <div class="price">₹499/month</div>
+                <ul>
+                    <li>Access to University Materials</li>
+                    <li>Basic Quiz Access</li>
+                    <li>Study Notes</li>
+                </ul>
+                <button class="subscribe-btn" onclick="subscribe('basic')">Subscribe Now</button>
+            </div>
+            <div class="plan premium">
+                <div class="popular">Most Popular</div>
+                <h3>Premium Plan</h3>
+                <div class="price">₹999/month</div>
+                <ul>
+                    <li>All Basic Plan Features</li>
+                    <li>Professional Courses</li>
+                    <li>Test Series</li>
+                    <li>Live Tutorials</li>
+                </ul>
+                <button class="subscribe-btn" onclick="subscribe('premium')">Subscribe Now</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="contentModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About EduQuest</h3>
+                <p>Your trusted partner in education and professional development.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#universities">Universities</a>
+                <a href="#courses">Professional Courses</a>
+                <a href="#subscriptions">Subscriptions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: support@eduquest.com</p>
+                <p>Phone: +91 1234567890</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="data.js"></script>
+    <script src="./public/main.js"></script>
+    <script src="./public/api-integration.js"></script>
+    <script  type="module" src="counter.js"></script>
+</body>
+</html>

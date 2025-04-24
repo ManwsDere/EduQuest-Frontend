@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Science Quiz</title>
+</head>
+<body style="font-family: Arial, sans-serif; background: #f3f3e0; margin: 0; padding: 0;">
+
+  <div style="max-width: 700px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 30px;">
+    <h1 style="text-align: center; color: #133e87;">Data Science Quiz</h1>
+    
+    <div id="quiz-container"></div>
+    
+    <button onclick="submitQuiz()" style="margin-top: 20px; background: #133e87; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">
+      Submit Quiz
+    </button>
+    
+    <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "1. What does 'EDA' stand for in Data Science?",
+        options: ["Exploratory Data Analysis", "Enhanced Data Access", "Entity Data Aggregation", "Encrypted Data Algorithm"],
+        correct: 0
+      },
+      {
+        question: "2. Which library is widely used for data manipulation in Python?",
+        options: ["NumPy", "Matplotlib", "Pandas", "Seaborn"],
+        correct: 2
+      },
+      {
+        question: "3. What does the 'NaN' value represent?",
+        options: ["Negative Analysis Node", "Not a Number", "New array Number", "Network Access Node"],
+        correct: 1
+      },
+      {
+        question: "4. Which algorithm is used for classification tasks?",
+        options: ["K-Means", "Linear Regression", "K-Nearest Neighbors", "Apriori"],
+        correct: 2
+      },
+      {
+        question: "5. What is the purpose of feature scaling?",
+        options: ["To normalize data range", "To increase model accuracy", "To generate more data", "To reduce overfitting"],
+        correct: 0
+      }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+
+    quizData.forEach((q, i) => {
+      const questionDiv = document.createElement("div");
+      questionDiv.style.marginBottom = "20px";
+
+      const question = document.createElement("p");
+      question.innerText = q.question;
+      question.style.fontWeight = "bold";
+      question.style.color = "#333";
+      questionDiv.appendChild(question);
+
+      q.options.forEach((option, index) => {
+        const label = document.createElement("label");
+        label.style.display = "block";
+        label.style.marginBottom = "6px";
+        label.style.cursor = "pointer";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "question" + i;
+        input.value = index;
+        input.style.marginRight = "10px";
+
+        label.appendChild(input);
+        label.append(option);
+        questionDiv.appendChild(label);
+      });
+
+      quizContainer.appendChild(questionDiv);
+    });
+
+    function submitQuiz() {
+      const total = quizData.length;
+      let score = 0;
+
+      quizData.forEach((q, i) => {
+        const options = document.getElementsByName("question" + i);
+        for (let option of options) {
+          if (option.checked) {
+            const isCorrect = parseInt(option.value) === q.correct;
+            if (isCorrect) {
+              score++;
+              option.parentElement.style.color = "green";
+            } else {
+              option.parentElement.style.color = "red";
+            }
+          }
+        }
+      });
+
+      document.getElementById("result").innerText = `You scored ${score} out of ${total}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body style="margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f3f3e0; display: flex; justify-content: center; align-items: center; height: 100vh;">
+
+    <div style="background-color: #fff; border-radius: 20px; padding: 40px 30px; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+      <img src="https://example.com/image/rzp.jpg" alt="EduQuest Logo" style="width: 80px; margin-bottom: 20px;">
+      <h2 style="color: #133e87; margin-bottom: 10px;">EduQuest Premium</h2>
+      <p style="font-size: 16px; color: #333; margin-bottom: 25px;">
+        Unlock access to all professional courses, quizzes, flashcards, and certification content.
+      </p>
+      <p style="font-size: 22px; color: #133e87; font-weight: bold; margin-bottom: 30px;">
+        ₹999 <span style="font-size: 14px; font-weight: normal;"> / Lifetime Access</span>
+      </p>
+
+      <button
+        id="rzp-button1"
+        style="
+          background-color: #133e87;
+          border: none;
+          color: white;
+          font-size: 1.1rem;
+          font-weight: bold;
+          padding: 14px 30px;
+          border-radius: 10px;
+          cursor: pointer;
+          box-shadow: 0 8px 16px rgba(19, 62, 135, 0.3);
+          transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+        "
+        onmouseover="this.style.backgroundColor='#0f326e'; this.style.boxShadow='0 6px 14px rgba(19,62,135,0.5)'"
+        onmouseout="this.style.backgroundColor='#133e87'; this.style.boxShadow='0 8px 16px rgba(19,62,135,0.3)'"
+      >
+        <i class="fas fa-money-bill" style="color: #fff;"></i> Subscribe Now
+      </button>
+
+      <p style="font-size: 12px; color: #888; margin-top: 25px; line-height: 1.6;">
+        By subscribing, you agree to our <a href="#" style="color: #133e87; text-decoration: none;">Terms & Conditions</a> and <a href="#" style="color: #133e87; text-decoration: none;">Privacy Policy</a>. <br>
+        No hidden fees. One-time secure payment via Razorpay.
+      </p>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      var options = {
+        key: "rzp_test_yZlLtxLNKg1XPE",
+        amount: "99900",
+        currency: "INR",
+        description: "EduQuest Professional Course Subscription",
+        image: "https://example.com/image/rzp.jpg",
+        prefill: {
+          email: "tejaskharat71@gmail.com",
+          contact: "+918956661948"
+        },
+        config: {
+          display: {
+            blocks: {
+              utib: {
+                name: "Pay Using Axis Bank",
+                instruments: [
+                  { method: "card", issuers: ["UTIB"] },
+                  { method: "netbanking", banks: ["UTIB"] }
+                ]
+              },
+              other: {
+                name: "Other Payment Methods",
+                instruments: [
+                  { method: "card", issuers: ["ICIC"] },
+                  { method: "netbanking" }
+                ]
+              }
+            },
+            hide: [{ method: "upi" }],
+            sequence: ["block.utib", "block.other"],
+            preferences: { show_default_blocks: false }
+          }
+        },
+        handler: function (response) {
+          alert("Payment Successful! ID: " + response.razorpay_payment_id);
+        },
+        modal: {
+          ondismiss: function () {
+            if (confirm("Are you sure, you want to close the form?")) {
+              console.log("Checkout form closed by the user");
+            } else {
+              console.log("Complete the Payment");
+            }
+          }
+        }
+      };
+
+      var rzp1 = new Razorpay(options);
+      document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+      };
+    </script>
+  </body>
+</html>
