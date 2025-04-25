@@ -75,3 +75,4 @@ function isAuthenticated() {
   
   // Export functions if using modules
   export { authenticatedFetch, isAuthenticated, parseJwt };
+
