@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test 2 - Machine Learning Concepts</title>
+  <style>
+    body { font-family: Arial; background: #f3f3e0; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #133e87; margin-bottom: 30px; }
+    .question { margin-bottom: 25px; }
+    .option { margin: 8px 0; }
+    .submit-btn { background: #133e87; color: white; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; }
+    .result { margin-top: 30px; font-size: 18px; color: green; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Test 2: Machine Learning Concepts</h1>
+
+    <form id="quizForm">
+      <div class="question">
+        <h3>1. What is supervised learning?</h3>
+        <div class="option"><input type="radio" name="q1" value="a"> Learning without any data</div>
+        <div class="option"><input type="radio" name="q1" value="b"> Learning from labeled data</div>
+        <div class="option"><input type="radio" name="q1" value="c"> Self-learning</div>
+        <div class="option"><input type="radio" name="q1" value="d"> Learning with rewards</div>
+      </div>
+
+      <div class="question">
+        <h3>2. Which algorithm is used for classification?</h3>
+        <div class="option"><input type="radio" name="q2" value="a"> Linear Regression</div>
+        <div class="option"><input type="radio" name="q2" value="b"> K-Nearest Neighbors</div>
+        <div class="option"><input type="radio" name="q2" value="c"> PCA</div>
+        <div class="option"><input type="radio" name="q2" value="d"> K-Means</div>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+      <div class="result" id="result"></div>
+    </form>
+  </div>
+
+  <script>
+    function submitQuiz() {
+      const answers = { q1: "b", q2: "b" };
+      let score = 0;
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) score++;
+      }
+      document.getElementById("result").innerHTML = `You scored ${score} out of ${Object.keys(answers).length}`;
+    }
+  </script>
+
+</body>
+</html>

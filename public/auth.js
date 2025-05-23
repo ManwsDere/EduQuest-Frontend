@@ -15,6 +15,7 @@ function isAuthenticated() {
     return token.split('.').length === 3 && token.length > 50;
   }
   
+  
   /**
    * Parses JWT token to extract payload data
    * @param {string} token - JWT token string

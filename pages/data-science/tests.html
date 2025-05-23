@@ -3,32 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <title>Test Series - Data Science</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3e0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    .title {
+      text-align: center;
+      color: #133e87;
+      margin-bottom: 40px;
+    }
+    .test-card {
+      background: #f9f9f9;
+      border-left: 6px solid #133e87;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .test-card h3 {
+      color: #133e87;
+      margin: 0 0 10px 0;
+    }
+    .test-card p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .progress-bar {
+      height: 8px;
+      background: #ddd;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background: #133e87;
+    }
+    .btn {
+      background: #133e87;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; background: #f3f3e0; margin: 0; padding: 0;">
+<body>
 
-  <div style="max-width: 700px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 30px;">
-    <h1 style="text-align: center; color: #133e87;">Data Science Test Series</h1>
+  <div class="container">
+    <h1 class="title">Data Science Test Series</h1>
 
-    <div style="margin-bottom: 30px;">
-      <h3 style="color: #133e87;">Test 1: Basics of Data Science</h3>
-      <p style="color: #555;">A short quiz to test your knowledge on the basics of Data Science.</p>
-      <button onclick="window.location.href='test1.html'" style="background: #133e87; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer;">Start Test</button>
+    <div class="test-card">
+      <h3>Test 1: Basics of Data Science</h3>
+      <div class="progress-bar"><div class="progress" style="width: 20%;"></div></div>
+      <p>A short quiz to test your knowledge on the basics of Data Science. Includes 10 questions.</p>
+      <button class="btn" onclick="window.location.href='test1.html'">Start Test</button>
     </div>
 
-    <div style="margin-bottom: 30px;">
-      <h3 style="color: #133e87;">Test 2: Machine Learning Concepts</h3>
-      <p style="color: #555;">Test your knowledge on various machine learning algorithms and their applications.</p>
-      <button onclick="window.location.href='test2.html'" style="background: #133e87; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer;">Start Test</button>
+    <div class="test-card">
+      <h3>Test 2: Machine Learning Concepts</h3>
+      <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
+      <p>Evaluate your understanding of algorithms, models, and applications in machine learning. Includes 20 questions.</p>
+      <button class="btn" onclick="window.location.href='test2.html'">Start Test</button>
     </div>
 
-    <div style="margin-bottom: 30px;">
-      <h3 style="color: #133e87;">Test 3: Data Preprocessing</h3>
-      <p style="color: #555;">Test your skills in cleaning and preprocessing raw data.</p>
-      <button onclick="window.location.href='test3.html'" style="background: #133e87; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer;">Start Test</button>
+    <div class="test-card">
+      <h3>Test 3: Data Preprocessing</h3>
+      <div class="progress-bar"><div class="progress" style="width: 30%;"></div></div>
+      <p>Test your data wrangling, cleaning, and transformation skills. Includes 15 questions.</p>
+      <button class="btn" onclick="window.location.href='test3.html'">Start Test</button>
     </div>
 
-    <div style="margin-top: 30px; text-align: center;">
-      <button onclick="window.location.href='index.html'" style="background: #133e87; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">Back to Courses</button>
+    <div class="footer">
+      <button class="btn" onclick="window.location.href='index.html'">Back to Courses</button>
     </div>
   </div>
 

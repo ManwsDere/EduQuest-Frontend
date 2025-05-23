@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test 3 - Data Preprocessing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3e0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #133e87;
+      margin-bottom: 30px;
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    .question h3 {
+      color: #133e87;
+    }
+    .option {
+      margin: 8px 0;
+    }
+    .submit-btn {
+      background-color: #133e87;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 18px;
+      color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Test 3: Data Preprocessing</h1>
+
+    <form id="quizForm">
+      <div class="question">
+        <h3>1. What is the first step in data preprocessing?</h3>
+        <div class="option"><input type="radio" name="q1" value="a"> Model Training</div>
+        <div class="option"><input type="radio" name="q1" value="b"> Data Cleaning</div>
+        <div class="option"><input type="radio" name="q1" value="c"> Model Evaluation</div>
+        <div class="option"><input type="radio" name="q1" value="d"> Data Splitting</div>
+      </div>
+
+      <div class="question">
+        <h3>2. What technique is used to fill missing data?</h3>
+        <div class="option"><input type="radio" name="q2" value="a"> Outlier Detection</div>
+        <div class="option"><input type="radio" name="q2" value="b"> Feature Scaling</div>
+        <div class="option"><input type="radio" name="q2" value="c"> Imputation</div>
+        <div class="option"><input type="radio" name="q2" value="d"> Normalization</div>
+      </div>
+
+      <div class="question">
+        <h3>3. What does normalization do?</h3>
+        <div class="option"><input type="radio" name="q3" value="a"> Increases data</div>
+        <div class="option"><input type="radio" name="q3" value="b"> Removes outliers</div>
+        <div class="option"><input type="radio" name="q3" value="c"> Scales features to a small range</div>
+        <div class="option"><input type="radio" name="q3" value="d"> Encodes categorical data</div>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+      <div class="result" id="result"></div>
+    </form>
+  </div>
+
+  <script>
+    function submitQuiz() {
+      const answers = {
+        q1: "b",
+        q2: "c",
+        q3: "c"
+      };
+      let score = 0;
+      let total = Object.keys(answers).length;
+
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) {
+          score++;
+        }
+      }
+
+      document.getElementById("result").innerHTML = `You scored ${score} out of ${total}`;
+    }
+  </script>
+
+</body>
+</html>
